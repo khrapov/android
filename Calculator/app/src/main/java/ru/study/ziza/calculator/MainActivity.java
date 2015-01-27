@@ -2,7 +2,7 @@ package ru.study.ziza.calculator;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-
+import android.view.View;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -14,5 +14,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+    public void onOperationButtonClick(View view) {
 
+    }
 }
