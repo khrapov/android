@@ -13,7 +13,10 @@
         <item name="android:background">@drawable/round_corners</item>
         <item name="android:textStyle">bold|italic</item>
         <item name="android:textSize">@dimen/abc_text_size_display_3_material</item>
-
+        <item name="android:shadowColor">#aaaaaa</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">2</item>
         <item name="android:gravity">center|right</item>
     </style>
 
@@ -21,7 +24,12 @@
         <item name="android:background">@drawable/button</item>
         <item name="android:textColor">@color/White</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:theme">@android:style/TextAppearance.DeviceDefault.Large</item>
+
+
+        <item name="android:shadowColor">#aaaaaa</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">2</item>
 
     </style>
 

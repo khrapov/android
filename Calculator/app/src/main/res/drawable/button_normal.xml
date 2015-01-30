@@ -9,7 +9,6 @@
         android:endColor="@color/button_normal_color_end"
         android:startColor="@color/button_normal_color_start"
         android:type="linear" />
-
     <padding
         android:bottom="9px"
         android:left="6px"

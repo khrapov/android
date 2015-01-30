@@ -8,5 +8,6 @@
     <color name="button_pressed_color_end">#79C83F</color>
     <color name="White">#FFFFFF</color>
     <color name="text_background_color">#A4A4A4</color>
+    <color name="black_alpha">#555555</color>
 
 </resources>
