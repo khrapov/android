@@ -3,6 +3,7 @@ package ru.study.ziza.calculator;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
@@ -13,13 +14,14 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
 
 
-    String o1 = "";
-    String o2 = "";
-    String op = "";
-    boolean dot = false;
 
 
-    TextView text;
+
+    private iValue currentValue;
+    private Value first = new Value();
+    private Value second = new Value();
+    private String operation = "";
+    private TextView text;
     HorizontalScrollView hsv;
 
 
@@ -30,14 +32,12 @@ public class MainActivity extends ActionBarActivity {
         text = (TextView) findViewById(R.id.textView1);
         hsv = (HorizontalScrollView) findViewById(R.id.scroller);
         //text.setMovementMethod(new ScrollingMovementMethod());
+        reset();
+        updateUI();
     }
 
-    public void addNum(String s) {
-        if (text.getText() == "")
-            text.setText(text.getText() + s);
-        else
-            text.setText(text.getText() + s);
-
+    private void updateUI() {
+        text.setText(currentValue.getString());
         hsv.postDelayed(new Runnable() {
 
             public void run() {
@@ -46,43 +46,107 @@ public class MainActivity extends ActionBarActivity {
         }, 100L);
     }
 
+    public void calc(View view) {
+        double a = first.getDouble();
+        double b = second.getDouble();
+        double c = 0d;
+        switch (operation) {
+            case "+":
+                c = a + b;
+                break;
+            case "-":
+                c = a - b;
+                break;
+            case "*":
+                c = a * b;
+                break;
+            case "/":
+                c = a / b;
+                break;
+            default:
+                break;
+        }
+        reset();
+        first.setValue(c);
+        updateUI();
+    }
+    public void onButtonReversClick(View view){
+        currentValue.negate();
+        updateUI();
+    }
+    public void onResetButtonClick(View view){
+        reset();
+        updateUI();
+    }
 
     public void onNumberButtonClick(View view) {
         switch (view.getId()) {
             case R.id.button0:
-                addNum(getString(R.string.button0));
-                Toast.makeText(this, "Нажали 0", Toast.LENGTH_SHORT).show();
+                currentValue.addNumber("0");
                 break;
             case R.id.button1:
-                addNum(getString(R.string.button1));
-                Toast.makeText(this, "Нажали 1", Toast.LENGTH_SHORT).show();
+                currentValue.addNumber("1");
                 break;
             case R.id.button2:
-                Toast.makeText(this, text.getText(), Toast.LENGTH_SHORT).show();
+                currentValue.addNumber("2");
                 break;
             case R.id.button3:
-                Toast.makeText(this, "Нажали 3", Toast.LENGTH_SHORT).show();
+                currentValue.addNumber("3");
                 break;
             case R.id.button4:
-                Toast.makeText(this, "Нажали 4", Toast.LENGTH_SHORT).show();
+                currentValue.addNumber("4");
                 break;
             case R.id.button5:
-                Toast.makeText(this, "Нажали 5", Toast.LENGTH_SHORT).show();
+                currentValue.addNumber("5");
                 break;
             case R.id.button6:
-                Toast.makeText(this, "Нажали 6", Toast.LENGTH_SHORT).show();
+                currentValue.addNumber("6");
                 break;
             case R.id.button7:
-                Toast.makeText(this, "Нажали 7", Toast.LENGTH_SHORT).show();
+                currentValue.addNumber("7");
                 break;
             case R.id.button8:
-                Toast.makeText(this, "Нажали 8", Toast.LENGTH_SHORT).show();
+                currentValue.addNumber("8");
                 break;
             case R.id.button9:
-                Toast.makeText(this, "Нажали 9", Toast.LENGTH_SHORT).show();
+                currentValue.addNumber("9");
+                break;
+            case R.id.button_dot:
+                currentValue.addDot();
+                break;
+            default:
+                currentValue.reset();
                 break;
         }
-
-
+        updateUI();
     }
+
+    public void onOperationButtonClick(View view) {
+        currentValue = second;
+        switch (view.getId()) {
+            case R.id.button_div:
+                operation = "/";
+                break;
+            case R.id.button_minus:
+                operation = "-";
+                break;
+            case R.id.button_mult:
+                operation = "*";
+                break;
+            case R.id.button_plus:
+                operation = "+";
+                break;
+            default:
+                operation = "";
+                break;
+        }
+        text.setText(operation);
+    }
+    public void reset(){
+        first.reset();
+        second.reset();
+        operation = "";
+        currentValue = first;
+    }
+    
 }

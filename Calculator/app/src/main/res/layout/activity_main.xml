@@ -62,7 +62,8 @@
             android:text="@string/button3"
             style="@style/ButtonTheme"
             android:layout_margin="5dp"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            android:onClick="onNumberButtonClick" />
     </LinearLayout>
 
     <LinearLayout
@@ -173,7 +174,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.33"
             android:text="@string/button_cancel"
-            android:onClick="onOperationButtonClick"
+            android:onClick="onResetButtonClick"
             style="@style/ButtonTheme"
             android:layout_margin="5dp"
             android:textSize="32sp" />
@@ -189,10 +190,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="@string/button_plus"
-            android:onClick="onOperationButtonClick"
             style="@style/ButtonTheme"
             android:layout_margin="5dp"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            android:onClick="onOperationButtonClick" />
 
         <Button
             android:id="@+id/button_minus"
@@ -233,14 +234,34 @@
             android:textSize="32sp" />
 
     </LinearLayout>
-    <Button
-        android:id="@+id/button_equals"
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_equals"
-        android:onClick="onOperationButtonClick"
-        style="@style/ButtonTheme"
-        android:layout_margin="5dp"
-        android:textSize="32sp" />
+        android:layout_height="fill_parent">
+
+        <Button
+            style="@style/ButtonTheme"
+            android:id="@+id/button_revers"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_revers"
+            android:onClick="onButtonReversClick"
+            android:layout_margin="5dp"
+            android:textSize="32sp"
+            android:layout_weight="2" />
+
+        <Button
+            android:id="@+id/button_equals"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_equals"
+            android:onClick="calc"
+            style="@style/ButtonTheme"
+            android:layout_margin="5dp"
+            android:textSize="32sp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </LinearLayout>
