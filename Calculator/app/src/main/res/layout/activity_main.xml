@@ -24,7 +24,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 style="@style/LabelStyle"
 
-                android:layout_gravity="right"/>
+                android:layout_gravity="right"
+                android:maxLength="20" />
         </HorizontalScrollView>
 
 

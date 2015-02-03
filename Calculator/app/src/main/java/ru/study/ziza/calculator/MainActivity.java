@@ -61,7 +61,11 @@ public class MainActivity extends ActionBarActivity {
                 c = a * b;
                 break;
             case "/":
-                c = a / b;
+                if (b==0d){
+                    Toast.makeText(this, R.string.division_by_zero_message,Toast.LENGTH_SHORT).show();
+                }else {
+                    c = a / b;
+                }
                 break;
             default:
                 break;
@@ -80,6 +84,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onNumberButtonClick(View view) {
+       Log.i("MainActivity", "asfasfasf");
         switch (view.getId()) {
             case R.id.button0:
                 currentValue.addNumber("0");
@@ -125,15 +130,31 @@ public class MainActivity extends ActionBarActivity {
         currentValue = second;
         switch (view.getId()) {
             case R.id.button_div:
+                if (second.isInitialized()) {
+                    calc(view);
+                    currentValue = second;
+                }
                 operation = "/";
                 break;
             case R.id.button_minus:
+                if (second.isInitialized()) {
+                    calc(view);
+                    currentValue = second;
+                }
                 operation = "-";
                 break;
             case R.id.button_mult:
+                if (second.isInitialized()) {
+                    calc(view);
+                    currentValue = second;
+                }
                 operation = "*";
                 break;
             case R.id.button_plus:
+                if (second.isInitialized()) {
+                    calc(view);
+                    currentValue = second;
+                }
                 operation = "+";
                 break;
             default:

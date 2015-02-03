@@ -21,6 +21,7 @@
     <string name="button_cancel">C</string>
     <string name="text_view_dial_default">0</string>
     <string name="button_revers">-/+</string>
+    <string name="division_by_zero_message">Што ты наделал!?!?!!!?!</string>
 
 
 </resources>
